@@ -1657,9 +1657,9 @@
     "restore": {
       "projectUniqueName": "Builder_monitor",
       "projectName": "Builder_monitor",
-      "projectPath": "C:\\UiBuilder\\Builder_monitor\\.local",
+      "projectPath": "C:\\gitRepositories\\kakaoUipath\\Builder_monitor\\.local",
       "packagesPath": "C:\\Users\\lopty\\.nuget\\packages\\",
-      "outputPath": "C:\\UiBuilder\\Builder_monitor\\.local"
+      "outputPath": "C:\\gitRepositories\\kakaoUipath\\Builder_monitor\\.local"
     },
     "frameworks": {
       "net461": {
