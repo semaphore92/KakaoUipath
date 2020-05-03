@@ -1,11 +1,12 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="KakaoChatRoom" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="chatRoomName" Type="InArgument(x:String)" />
+    <x:Property Name="kakaoUtterance" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>855,2105</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>500,1339</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>KakaoChatRoom_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -30,7 +31,6 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
-      <x:String>UiPath.CV</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -51,16 +51,13 @@
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.CV</AssemblyReference>
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="KakaoChatRoom" sap:VirtualizedContainerService.HintSize="835,2045" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap:VirtualizedContainerService.HintSize="480,1279" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Boolean" Default="False" Name="closeBtnYn" />
-      <Variable x:TypeArguments="x:Boolean" Default="False" Name="chatBtnYn" />
       <Variable x:TypeArguments="s:DateTime" Default="[DateTime.Now]" Name="dateNow" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -68,151 +65,17 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="793,1953" sap2010:WorkflowViewState.IdRef="TryCatch_1">
-      <TryCatch.Finally>
-        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;KakoChatRoom Success&quot;]" />
-      </TryCatch.Finally>
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,1187" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence sap:VirtualizedContainerService.HintSize="755,1748" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="KakaoChatRoom" sap:VirtualizedContainerService.HintSize="376,960" sap2010:WorkflowViewState.IdRef="Sequence_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="713,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;[&quot;+dateNow.ToString+&quot;] kakaoChatRoom Start&quot;]" />
-          <ui:ImageFound DisplayName="Image Exists 'KakaoTalk.exe  KakaoTal...'" Found="[chatBtnYn]" sap:VirtualizedContainerService.HintSize="713,106" sap2010:WorkflowViewState.IdRef="ImageFound_2">
-            <ui:ImageFound.Image>
-              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAB8AAAAdCAYAAABSZrcyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFpSURBVEhL7ZZ/S8JAHId7/68lS8WYPxZTR5qKkYRhrkBd6XT6Gr71GQRy+5y7OwiJ+uNBnN97Hhl3uov9/iDn4j9+Fn5XfD5/lfHDo4RhT7x6Sy5LlewV73Edn7N1DOP4YrES329nsSIwh3nmOaYwvtul0usPpXTFQzowj3VYz7ygMA4Bk5vSvx9RLzgZnz7PqNAWeJhfG4/jj69bV6UyW+CBT21o48PRmIpcgU9taOP1hk8lrsCnNrTxcuWGSlyBT21o49flGpW4Ap/a0MY9r0klrnheK9fQxtudkEpcGQzy510bn71EVOJGVZbLONfQxtN0L43mLRHZM5k80YY2DtbrRGq1OhWa0u3eUTc4GQf4Ai0/oOIisG+22x31gsI42GwSKteBkxJFb9R1jFE8SbY08g1+QHB38A84nc6y/cI8Ko7xanZ0cJ3Nm2IdD4KOrOJ3OmeLURybBsfO5vnMBKP4T/FX4wf5BGqHWf6pxWmHAAAAAElFTkSuQmCC" />
-            </ui:ImageFound.Image>
-            <ui:ImageFound.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;wnd app='kakaotalk.exe' cls='KakaoTalkShadowWndClass' title='KakaoTalkShadowWnd' /&gt;" TimeoutMS="3000">
-                <ui:Target.WaitForReady>
-                  <InArgument x:TypeArguments="ui:WaitForReady" />
-                </ui:Target.WaitForReady>
-              </ui:Target>
-            </ui:ImageFound.Target>
-          </ui:ImageFound>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="713,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;[&quot;+dateNow.ToString+&quot;] kakaoChatRoom &gt;&gt; chatBtnYn : &quot; + chatBtnYn.ToString]" />
-          <If Condition="[chatBtnYn = True]" sap:VirtualizedContainerService.HintSize="713,254" sap2010:WorkflowViewState.IdRef="If_2">
-            <If.Then>
-              <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'KakaoTalk.exe  KakaoTal...'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ClickImage_5" KeyModifiers="None" MouseButton="BTN_LEFT">
-                <ui:ClickImage.CursorPosition>
-                  <ui:CursorPosition Position="Center">
-                    <ui:CursorPosition.OffsetX>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:CursorPosition.OffsetX>
-                    <ui:CursorPosition.OffsetY>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:CursorPosition.OffsetY>
-                  </ui:CursorPosition>
-                </ui:ClickImage.CursorPosition>
-                <ui:ClickImage.Image>
-                  <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAB0AAAAcCAYAAACdz7SqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFkSURBVEhL7ZZta4JQGIb3/3/L2kocVjrshdUqGsVwuNqgcivf+g3PdguCttvUA+3L9uFC0vNcF8g52FUcH+W3+Y9elFrR1epN5k8LGQ5HYrRNuW60kit+4z6es7lTKkU3m51YVi+JlIF1WM88KWejYRjJaDyVxg0PFIH1mMM8856NYpBJqzJ+nFFvYdR5camoLvCcumnU8z6/X5FGJXWBB76sn0anszkVqAJf1k+j7Y5Fh1WBL+un0Wbrjg6rAl/WT6O3TZ0OqwJf1k+jhtGlw6oYhpnz02ivP6TDqkwm+fNKo+7rmg6rocl26+X8NBpFsXS690RQn+Xy+YefRsF+74uut6moKoPBA3UXRgHCpmVTYRnYF0EQUu/ZKDgcfCotAjt/vX6nrpTSqO8HVJ6Cg4+3gS+S47jJfmCeLApRLTkCuM/WV6FW1Lb7svM+6Lo6lEaxGXB8qv7/qUJp9BL8lehRvgB26hJT+ni0sgAAAABJRU5ErkJggg==" />
-                </ui:ClickImage.Image>
-                <ui:ClickImage.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;wnd app='kakaotalk.exe' cls='KakaoTalkShadowWndClass' title='KakaoTalkShadowWnd' /&gt;" TimeoutMS="3000">
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:ClickImage.Target>
-              </ui:ClickImage>
-            </If.Then>
-            <If.Else>
-              <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'KakaoTalk.exe  KakaoTal...'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ClickImage_6" KeyModifiers="None" MouseButton="BTN_LEFT">
-                <ui:ClickImage.CursorPosition>
-                  <ui:CursorPosition Position="Center">
-                    <ui:CursorPosition.OffsetX>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:CursorPosition.OffsetX>
-                    <ui:CursorPosition.OffsetY>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:CursorPosition.OffsetY>
-                  </ui:CursorPosition>
-                </ui:ClickImage.CursorPosition>
-                <ui:ClickImage.Image>
-                  <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAdCAYAAAC5UQwxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGXSURBVEhL7ZbLSwJRFIf7owpDKLIoKFxVkmKhPTYJtSiGFkFkQcxGWhRtqk3bjAiKpge0t6LCWkngg/CB/g0nf4Iw4z0z3rlURLT4EMdzvg/0DmNHtVqjn+Q/+OX83uClcUu7e/ukraxRIBihTk9f4xXvcR2fc3uttA2mUo8UnYk1Au3AHOY5TxPbYLFYovUNnbq6fazcDsxjD/uc1zaIJU4oS3xTZ71s8Dh5ykrcAk+rWwimX9/I2zPECtwCD3xmvxBMbO+wy6rAZ/YLwWB4ml1UJVT3mf1CsH/Qzy6qAp/ZLwR7fcPsoirwmf1CcHRskl1UJTARsfiF4MKixi6qsqUnLH4heH5hsIsqeLwDdP/wZPELwXK5QuGpOVbgloPDI4sbCEGQybzTiH+clciyrK0KXsAGAaLRWbmnRCs4B4XCB+u1DYJsNs8K7cAJv765Y11NHIO5nHMQNzW+hXj9yZI8OaNSqcJ6zLgK4tThmOfyBXZeBungfGyJnl/S7JwbHIP44UP1W8S4kvu/IoNj8Dv468EafQIUd24zBWPAgwAAAABJRU5ErkJggg==" />
-                </ui:ClickImage.Image>
-                <ui:ClickImage.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;wnd app='kakaotalk.exe' cls='KakaoTalkShadowWndClass' title='KakaoTalkShadowWnd' /&gt;" TimeoutMS="3000">
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:ClickImage.Target>
-              </ui:ClickImage>
-            </If.Else>
-          </If>
-          <ui:ImageFound DisplayName="Image Exists 'KakaoTalk.exe  KakaoTal...'" Found="[closeBtnYn]" sap:VirtualizedContainerService.HintSize="713,106" sap2010:WorkflowViewState.IdRef="ImageFound_1">
-            <ui:ImageFound.Image>
-              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAI0AAAArCAYAAABFGwtWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAK0SURBVHhe7Zxbb9owGIb5//8FwkUziXXqpDImqnJsS9ptRGvH1EpAQeO8G77lTUIWjDm4026c95UeNXVs3+SRY8cJOWEYw1AaxjiUhjEOpWGMQ2kY41AaxjiUhjEOpWGMQ2kY4+SqV9dC7Oe61pD2za1491/k6UdPptNprIB5covFUoj9zGZzGY9/SX8wlO+PT4FAd1JvtOT55UXW63Wsw2mhNBkGEj08fJVmsy2vo1GsxPFQGiLD4as0mi3p9X7GWhwOpSEhk8lMbu88+db1YzX2h9KQhPl8EYpzbMShNGQLjDi4VY1G41iR3VAaS8AokabfH0i7fSPlclnOztwQHKMM59T66b4GwRwHk+N9qypKYwlpATzPE8cpSj6f14JzqJNuo/aHVRWW47pQGkuILv48HE10ouhAXbTRSYPlOJ7j6EJpLAEXHqOHTo5DeN69VhqAJ8i6J8eUxhIwTykW/96SarVaQH1LkKi8Hp7b/I82aKvrE0+OseWghtJYAia4qhyr1W9ptdpJGY5RpsqEtro+seWAvSo1lMYSyuVPWyKAavVKlsuVdDqdEByjTK2Htro+Ma/BLUoNpbEE1323IwOoVD4Ho8sqpFKpaOugra5PbHJid1wNpbEE13V3ZCgUHPF9P6mD40KhsFOP0mQU9fbkOI48BhNZXPiLi48hOEYZzqXr8vaUUdSJcLfry2QylfPzD0kZjlGGc+m6nAhnFHXJXSq9DyhtyRGVl8Jzm/+55M4wb3+4F20n6Prkwz3LwYXHlsDl5enbCKjLbYQME0kT0ekc37BEnXQbtT9uWGaAtAAA8xRMcPlqBPnvbF7COvSiOaUhCRhx+LonORm+WE6M4Ccs5GT4sRw5yN7Pcp/f8Fmu7mNxYh/qDwBM/uUHAOK/DHNyKA1jHErDGIfSMIYR+QMSPZ4oQ9GiFQAAAABJRU5ErkJggg==" />
-            </ui:ImageFound.Image>
-            <ui:ImageFound.Target>
-              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;wnd app='kakaotalk.exe' cls='KakaoTalkShadowWndClass' title='KakaoTalkShadowWnd' /&gt;" TimeoutMS="3000">
-                <ui:Target.WaitForReady>
-                  <InArgument x:TypeArguments="ui:WaitForReady" />
-                </ui:Target.WaitForReady>
-              </ui:Target>
-            </ui:ImageFound.Target>
-          </ui:ImageFound>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="713,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;[&quot;+dateNow.ToString+&quot;] kakaoChatRoom &gt;&gt; closeBtnYn : &quot; + closeBtnYn.ToString]" />
-          <If Condition="[closeBtnYn = True]" sap:VirtualizedContainerService.HintSize="713,254" sap2010:WorkflowViewState.IdRef="If_1">
-            <If.Then>
-              <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'KakaoTalk.exe  KakaoTal...'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ClickImage_3" KeyModifiers="None" MouseButton="BTN_LEFT">
-                <ui:ClickImage.CursorPosition>
-                  <ui:CursorPosition Position="Center">
-                    <ui:CursorPosition.OffsetX>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:CursorPosition.OffsetX>
-                    <ui:CursorPosition.OffsetY>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:CursorPosition.OffsetY>
-                  </ui:CursorPosition>
-                </ui:ClickImage.CursorPosition>
-                <ui:ClickImage.Image>
-                  <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE8SURBVDhPtVTLasMwEOz//4slH+KCm5BCVJUUHIgDUi8xpNf0lvrV08Yj48R6uA0lPQysZ2dGlqz1Q103dA+cTiXdLQz4n7Cqqi0cj5+U5zsSQtBslhigBoeeq58M01oT5zFFURQEetCMPYGwyqweCggBWniCYVgtZPoJWr/7YTiHOL5uLcuyDhvL2PMb0xue4YHXCsPBuqa2/abtNr9wqMG5i8BrhQnxYgmA9fqNmqYlpZQBanCuDl4rLEkePREg5Wv3Nq2BlDKogdcJSzwRY5yKojB9ADVjzNN5Ye42Oed0OHxQWVa0XD4boAaH3ljrbdP9APt90Q3vF83niwuHGhx6Y633AdyrkaZPHVLL1POp6Q3Pwavx90vbj5UXhtFYrW4fJ2gnx2mAUr8POjRjz2QYgHPAwd7+C2roDMcF5R69l1opAAAAAElFTkSuQmCC" />
-                </ui:ClickImage.Image>
-                <ui:ClickImage.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;wnd app='kakaotalk.exe' cls='KakaoTalkShadowWndClass' title='KakaoTalkShadowWnd' /&gt;">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:ClickImage.Target>
-              </ui:ClickImage>
-            </If.Then>
-            <If.Else>
-              <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'KakaoTalk.exe  KakaoTal...'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ClickImage_4" KeyModifiers="None" MouseButton="BTN_LEFT">
-                <ui:ClickImage.CursorPosition>
-                  <ui:CursorPosition Position="Center">
-                    <ui:CursorPosition.OffsetX>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:CursorPosition.OffsetX>
-                    <ui:CursorPosition.OffsetY>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:CursorPosition.OffsetY>
-                  </ui:CursorPosition>
-                </ui:ClickImage.CursorPosition>
-                <ui:ClickImage.Image>
-                  <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAALEAAAAjCAYAAADbh+uNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAATlSURBVHhe7Zxbb9MwFID5/8+TWCW2IQZDYZo2gUAKvICGRNkED0OgAINt3Doug7Zrd2GTDj5u3PhynMSho4k4lj6tTZzkxP586iTtLgEXLg0vLDGXxheWmEvjSyWJz8/P4fj4BAaDI+gfDqDbO4Rf3T7DTIUgiU9OTqHXH0BPSHso5B0Mj2A4PIajI4aZHqUk/n12JuXtC1hapm4USnwssm9XpGycOlA7YJhpkyvxUFTAqQNnX6bOeCXGDIwCUxsxTJ0gJcY5ME4hOAMzTYCUGC/ieA7MNAVH4pPTU3kXgqrMMHXEkRizcOg0otfrk8vL0YF2FEG7477vtCOIE71uAnGrBS2LqN2R65NY3w+xfRJDK07c13l0nkKkjhU9hY62zj4egse041OoOIPA49tx+mL3xoptGkNivDdjG5HWEfsvjBVjsLfXYqLaZrS8ZfSJquf2dXkMifFJXMjF3NbWC4iiWzAzMyO5dm0Rnj17TtZ1oYWMkyKJ9c4wmbzEeLxsn1LQEh1FUkaMMT7JUgHI2N1Ys+PZEmtQ+wqKNUVsQ8lp1JHLL1hifJSMT+Koijb37z+AxcXrsL39Tsyfh3LZzs4uLC8vw9ramsjmZefUmbT2e1piu2OzzqEkNusKQiR2OtOMleoo8pgpwWIgHsmKl9kD4SIldgcJLfEoJn3fE5cYL+bwUTJVUefly1dw48aSmDu7WRvlXVlZgSdP2s46GlMM/T0t8QQzcdrBvsajGlY/hk/iSrKSKBGt4xCx58fqSqbA7expUpjEWv9pcTkxI3K/iRELZmb7XEIxJMYv85SZD6PAmIGpdcj+/j7Mzc2T6xzSeVzWaKrjqBOjMrEg7YRgie0MZFFVYic+hS1LLum5YoxpG41jIWKvJnHxIMmVWcbltgHitA3WVeevvVb1qPjLYkiM30ajKung1OHy5dnCacfCwlUh81dynQ6OxCgWI3ScYbORHXpidsORQgVIjHXMTtSyjnhPSTwZRgKb564to2J3lpnJgJxO4DYok/qrLc/PxOm+cwal2TbuJyj2DR5jKhJ3uz2YnW2N58E+5ucX4Nu37+Q6hZQsbYjsdXWJJw82ftYZMkZNFKOjUISxMPlczDm5sZqfbpbEMotmy+THujbA8yWuF5WmE0tLN2Fv7wO5Dvnx40CKTq0bYzUiMrpyLSPxKCuVlUPKZ9cvysIKGWe6jZV5Li4Tp+QNDCp+b6yWxLKeG/v4zkFpidOMrMc1hmobut8UVQd3pQu7zc1NeRfCl41v374D6+uPyXXFFElsZpyMbDt9uZmRNFCQsiJ7oCQmB0xKcHbzyRQcuyVxEUESU30RPsD9CasYQ+KQW2x4G211dVVexKllBwc/4e7de/LCD2+/ff78xdimHJOXmOpw3/IQfBKTnWGLgdmw6PgscSkMiUMedmAW3tjYkNOGK1fm5IMOfP3w4SN56+316zfyDsXu7h65vZ8iiZF/OJ3I4a8ysRClsNNQVmI/ktpITMQmmZLEWKo8dsYLOCrrvn+/IwXPux33v5LEAVIxuTgST/oLQB8/foK3b7fJdQwzCRyJsfBXMZkmQUrMX4pnmgQpMRb+eRLTFLwSY+EfijJNIFdiLPyTfabuFEqMhf95ClNnSkmsCv8bK6aOBEmsCv9DQaZOVJKYC5c6FZaYS8MLwB8Rrp3Z1RJRFAAAAABJRU5ErkJggg==" />
-                </ui:ClickImage.Image>
-                <ui:ClickImage.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="&lt;wnd app='kakaotalk.exe' cls='KakaoTalkShadowWndClass' title='KakaoTalkShadowWnd' /&gt;">
-                    <ui:Target.TimeoutMS>
-                      <InArgument x:TypeArguments="x:Int32" />
-                    </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
-                  </ui:Target>
-                </ui:ClickImage.Target>
-              </ui:ClickImage>
-            </If.Else>
-          </If>
-          <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into" sap:VirtualizedContainerService.HintSize="713,96" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[chatRoomName]">
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;[&quot;+dateNow.ToString+&quot;] KaKaoChatRoom Start&quot;]" />
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;chatRoomName : &quot;+ chatRoomName +&quot; /  kakaoUtterance :&quot; + kakaoUtterance]" />
+          <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[chatRoomName]">
             <ui:TypeInto.Target>
               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}">
                 <ui:Target.TimeoutMS>
@@ -224,8 +87,32 @@
               </ui:Target>
             </ui:TypeInto.Target>
           </ui:TypeInto>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="713,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;[&quot;+dateNow.ToString+&quot;] kakaoChatRoom &gt;&gt; chatRoomName : &quot; + chatRoomName.ToString]" />
-          <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="713,116" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="enter" KeyModifiers="None" SpecialKey="True">
+          <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="enter" KeyModifiers="None" SpecialKey="True">
+            <ui:SendHotkey.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:SendHotkey.Target>
+          </ui:SendHotkey>
+          <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+          <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into" sap:VirtualizedContainerService.HintSize="334,96" sap2010:WorkflowViewState.IdRef="TypeInto_2" Text="[kakaoUtterance]">
+            <ui:TypeInto.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:TypeInto.Target>
+          </ui:TypeInto>
+          <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="334,116" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="enter" KeyModifiers="None" SpecialKey="True">
             <ui:SendHotkey.Target>
               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}">
                 <ui:Target.TimeoutMS>
@@ -239,6 +126,24 @@
           </ui:SendHotkey>
         </Sequence>
       </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+      <TryCatch.Finally>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;[KakaoChatRoom Success]&quot;]" />
+      </TryCatch.Finally>
     </TryCatch>
   </Sequence>
 </Activity>
