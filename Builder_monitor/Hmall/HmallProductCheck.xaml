@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>663,1636</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>813,1876</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>KakaoUtterance_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -58,7 +58,7 @@
       <AssemblyReference>UiPath.CV</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="643,1576" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap:VirtualizedContainerService.HintSize="793,1816" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Default="False" Name="orderBtnYn" />
       <Variable x:TypeArguments="s:DateTime" Default="[DateTime.Now]" Name="dateNow" />
@@ -68,20 +68,20 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="601,1484" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="751,1724" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Finally>
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;HmallProductCheck Success :: &quot; + operatorYn.ToString]" />
       </TryCatch.Finally>
       <TryCatch.Try>
-        <Sequence DisplayName="KakaoUtterance" sap:VirtualizedContainerService.HintSize="563,1279" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <Sequence DisplayName="KakaoUtterance" sap:VirtualizedContainerService.HintSize="713,1519" sap2010:WorkflowViewState.IdRef="Sequence_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="521,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;[&quot;+dateNow.ToString+&quot;] HmallProductCheck Start&quot;]" />
-          <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="521,22" sap2010:WorkflowViewState.IdRef="Delay_6" />
-          <ui:ImageFound DisplayName="Image Exists 'KakaoTalk.exe  KakaoTal...'" Found="[orderBtnYn]" sap:VirtualizedContainerService.HintSize="521,106" sap2010:WorkflowViewState.IdRef="ImageFound_6">
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="671,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;[&quot;+dateNow.ToString+&quot;] HmallProductCheck Start&quot;]" />
+          <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="671,22" sap2010:WorkflowViewState.IdRef="Delay_6" />
+          <ui:ImageFound DisplayName="Image Exists 'KakaoTalk.exe  KakaoTal...'" Found="[orderBtnYn]" sap:VirtualizedContainerService.HintSize="671,106" sap2010:WorkflowViewState.IdRef="ImageFound_6">
             <ui:ImageFound.Image>
               <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAMkAAAAqCAYAAAAZFn8pAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKKSURBVHhe7ZjtcYMwDEA7TfZhGi/jWTxF/jOKKxkIX7YFhN4l9XtXHU1iY1LrIdGfCABVkATAAEkADJAEwABJAAyykjyfT4JoLkoUJQFoCSQBMEASAAMkATBAEgADJAEwQBIAAyQBMEASAAMkATBoT5K+15/T9L6Lj8cjRefnE+j7LowvKgTXxcU0IUTX+bh6q/exG9fYx3b+mu355+vKrCOvfJdbQ2I7Nrj8uDG23z24/LjHkT/Sh9KMJH0IMXgXnfPR69GHTeJU0ER5JY8m2JyQt0qS0PM7+XSiNG7NOUlKGGOTxOdkTeg8JPl0goihIcknRydJ7mQznXPVDZ/YbbxIM1WTY5LImru7aTkh1+sdS/JzkpyoJBOvG8Uwt/SdkUT4ZkmCbHQI2m71SZYQpKqkDa23YLuNX2y6LYkKMszXsbMoozgS81vnWpsluTZnGD+vM7eJ22pVYiHTZvHXehupaLeE75VEs1TvgwNJCq0IUk1SRZE2rLSNlytJak/WyTiLcqxCHOW2SmK0Uy3SliQTkrwqhrZdnSRXEqV2Z321Goom2JxIdiUpsUleo4pMUVrrnCRLKlXlzDW9ef2fTJuSSJvllg/xctSo7V+qAONGn//vVu7ObbU7leTNUG23rkqy46/GfjbNSuL9WE005Pdau1XjiCSawLsx2oplkrfY01cTvcadFctK/OXnSPJl7CUZnkWmSiJxcUPvlyT3TGBVgxrvzN1yRpL/QyOS9JJ8Q/UohmTxlUS6u93680ryFkckyVx7iu+VpxFJAK6DJAAGSAJggCQABkgCYIAkAAZIAmCAJAAGSAJggCQABpckIYjWokRWEgCYQRIAAyQBMEASAAMkAagS4y9gMxlrHtCvDgAAAABJRU5ErkJggg==" />
             </ui:ImageFound.Image>
@@ -93,15 +93,15 @@
               </ui:Target>
             </ui:ImageFound.Target>
           </ui:ImageFound>
-          <If Condition="[orderBtnYn=False]" sap:VirtualizedContainerService.HintSize="521,446" sap2010:WorkflowViewState.IdRef="If_1">
+          <If Condition="[orderBtnYn=False]" sap:VirtualizedContainerService.HintSize="671,686" sap2010:WorkflowViewState.IdRef="If_1">
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="376,298" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <Sequence sap:VirtualizedContainerService.HintSize="526,538" sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ImageFound DisplayName="Image Exists 'KakaoTalk.exe  KakaoTal...'" Found="[orderBtnYn]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ImageFound_7">
+                <ui:ImageFound DisplayName="Image Exists 'KakaoTalk.exe  KakaoTal...'" Found="[orderBtnYn]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="ImageFound_7">
                   <ui:ImageFound.Image>
                     <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAMUAAAAlCAYAAADyfC1yAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGSSURBVHhe7dfBdYQgFEbhVGM/VEMz1mIV7i2FiGCUn0cOSXAT73cOi3GIk8W7g/MRABSIAhBEAYgqinVdWazXrTszCuBNiAIQRAEIogAEUQCCKABBFIAgCkAQBSCIAhBEMdjiXZi3/OKwBO/mcL+0zS5M01Qsv8R36r2n+Ddpz6X+rMTaa12DjSgG643CHtC/RLGF2ZWhHSvfjyj6EcVQ+1DHQSym74dR5GEu38/X5T6cFM8gimHi4KYhjQN4hVEP+rdRVCdFOgHi/vK+rSjyiZH3LT59dh0aWohihG0ObvL7SF+uAa4H/XgvD+rXMvdeoZ3uYZiPavu93H5RA4qviaIPUTzO+vYfo4wiBVEM/uL5TfELRDGU9WO3PEFO5mkRlxVQPImMiW79pjhikPvG0wN9iGKg+PxezW4caGPQ7W/uxqnSiMLU+Dzzf4OJKAYiiv+BKIZ68PHJ2rsv87HIeHwiiH5EAQiiAARRAIIoAEEUgCAKQBAFIIgCEEQBCKIARFcULNbb1l0VBfB2RAEUQvgEzT5zsUGuacIAAAAASUVORK5CYII=" />
                   </ui:ImageFound.Image>
@@ -113,18 +113,29 @@
                     </ui:Target>
                   </ui:ImageFound.Target>
                 </ui:ImageFound>
-                <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_3">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="x:String">[productType]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">02</InArgument>
-                  </Assign.Value>
-                </Assign>
+                <If Condition="[orderBtnYn=True]" sap:VirtualizedContainerService.HintSize="484,300" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[productType]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">02</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Then>
+                </If>
               </Sequence>
             </If.Then>
           </If>
-          <Assign sap:VirtualizedContainerService.HintSize="521,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign sap:VirtualizedContainerService.HintSize="671,60" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[operatorYn]</OutArgument>
             </Assign.To>
@@ -132,7 +143,7 @@
               <InArgument x:TypeArguments="x:Boolean">[orderBtnYn]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="521,116" sap2010:WorkflowViewState.IdRef="SendHotkey_6" Key="esc" KeyModifiers="None" SpecialKey="True">
+          <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="671,116" sap2010:WorkflowViewState.IdRef="SendHotkey_6" Key="esc" KeyModifiers="None" SpecialKey="True">
             <ui:SendHotkey.Target>
               <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}">
                 <ui:Target.TimeoutMS>
@@ -144,7 +155,7 @@
               </ui:Target>
             </ui:SendHotkey.Target>
           </ui:SendHotkey>
-          <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'KakaoTalk.exe  KakaoTal...'" sap:VirtualizedContainerService.HintSize="521,106" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+          <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Image 'KakaoTalk.exe  KakaoTal...'" sap:VirtualizedContainerService.HintSize="671,106" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT">
             <ui:ClickImage.CursorPosition>
               <ui:CursorPosition Position="Center">
                 <ui:CursorPosition.OffsetX>
